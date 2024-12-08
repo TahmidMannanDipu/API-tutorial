@@ -1,9 +1,10 @@
 import 'package:apitutorials/example_two.dart';
-import 'package:apitutorials/home_page.dart';
 import 'package:flutter/material.dart';
 
-void main(){
-  runApp(MyApp());
+import 'example_three.dart';
+
+void main() {
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -14,10 +15,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'API Tutorial',
-      theme: ThemeData(
-        primaryColor: Colors.blueAccent
-      ),
-      home: ExampleTwo(),
+      theme: ThemeData(primaryColor: Colors.blueAccent),
+      home: const ExampleThree(),
     );
   }
 }
