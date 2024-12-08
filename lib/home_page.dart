@@ -13,13 +13,16 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<PostsModel> postModelList = [];
+
   Future<List<PostsModel>> getPostApi() async {
+
     try {
-      final response = await http
-          .get(Uri.parse("https://jsonplaceholder.typicode.com/posts"));
+
+      Uri uri = Uri.parse("https://jsonplaceholder.typicode.com/posts");
+      final response = await http.get(uri);
       var data = jsonDecode(response.body.toString());
       if (response.statusCode == 200) {
-        for (Map i in data) {
+        for (Map<String, dynamic> i in data) {
           postModelList.add(PostsModel.fromJson(i));
         }
       } else {
@@ -35,25 +38,26 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("API Tutorial",style: TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.bold
-        ),),
+        title: const Text(
+          "API Tutorial",
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
         centerTitle: true,
         backgroundColor: Theme.of(context).primaryColor,
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
             child: FutureBuilder(
               future: getPostApi(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(child: Text("Loading..."));
+                  return const Center(child: Text("Loading..."));
                 } else if (snapshot.hasError) {
                   return Center(child: Text("Error: ${snapshot.error}"));
                 } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                  return Center(child: Text("No data available"));
+                  return const Center(child: Text("No data available"));
                 } else {
                   return ListView.builder(
                       itemCount: postModelList.length,
@@ -62,6 +66,7 @@ class _HomePageState extends State<HomePage> {
                           padding: const EdgeInsets.all(8.0),
                           child: Card(
                             child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
