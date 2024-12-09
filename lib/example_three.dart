@@ -102,8 +102,8 @@ class _ExampleThreeState extends State<ExampleThree> {
 }
 
 class ResUsableRow extends StatelessWidget {
-  String title, value;
-  ResUsableRow({required this.title, required this.value, super.key});
+  final String title, value;
+  const ResUsableRow({required this.title, required this.value, super.key});
 
   @override
   Widget build(BuildContext context) {
