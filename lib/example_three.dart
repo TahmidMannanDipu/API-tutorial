@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:apitutorials/const.dart';
 import 'package:apitutorials/models/user_model.dart';
+import 'package:apitutorials/widgets/reusable_row.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -32,8 +33,8 @@ class _ExampleThreeState extends State<ExampleThree> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          "API Tutorial(Ex-3)",
+        title:  const Text(
+          "API Tutorial(Example 3)",
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
@@ -101,23 +102,4 @@ class _ExampleThreeState extends State<ExampleThree> {
   }
 }
 
-class ResUsableRow extends StatelessWidget {
-  final String title, value;
-  const ResUsableRow({required this.title, required this.value, super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Text(
-          title,
-          style: AppTextStyle.titleStyle,
-        ),
-        Text(
-          value,
-          style: AppTextStyle.bodyStyle,
-        )
-      ],
-    );
-  }
-}

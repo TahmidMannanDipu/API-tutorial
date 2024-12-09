@@ -32,8 +32,8 @@ class _ExampleTwoState extends State<ExampleTwo> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          "API Tutorial(Ex-2)",
+        title:  const Text(
+          "API Tutorial(Example 2)",
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
